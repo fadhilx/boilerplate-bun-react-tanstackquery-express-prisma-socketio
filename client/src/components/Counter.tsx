@@ -1,6 +1,8 @@
 import { Plus, Minus, RotateCcw, Wifi, WifiOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useSocket } from "@/hooks/useSocket";
 
 export function Counter() {
@@ -13,7 +15,7 @@ export function Counter() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-md shadow-xl">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-2">
@@ -22,53 +24,43 @@ export function Counter() {
             ) : (
               <WifiOff className="h-5 w-5 text-red-500" />
             )}
-            <span
-              className={`text-sm ${
-                isConnected ? "text-green-600" : "text-red-600"
-              }`}
-            >
+            <Badge variant={isConnected ? "default" : "destructive"}>
               {isConnected ? "Connected" : "Disconnected"}
-            </span>
+            </Badge>
           </div>
-          <CardTitle className="text-3xl font-bold text-gray-800">
-            Project Counter
-          </CardTitle>
-          <p className="text-sm text-gray-600">
+          <CardTitle className="text-3xl font-bold">Project Counter</CardTitle>
+          <p className="text-sm text-muted-foreground">
             Last updated: {formatTime(lastUpdate)}
           </p>
         </CardHeader>
 
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-4">
           {/* Counter Display */}
           <div className="text-center">
-            <div className="text-6xl font-bold text-indigo-600 mb-2">
-              {counter}
-            </div>
-            <p className="text-sm text-gray-500">
+            <div className="text-4xl font-bold text-primary">{counter}</div>
+            <p className="text-sm text-muted-foreground">
               {counter === 1 ? "project" : "projects"}
             </p>
           </div>
 
           {/* Control Buttons */}
-          <div className="flex space-x-3">
+          <div className="flex gap-3">
             <Button
               onClick={decrement}
               disabled={!isConnected}
               variant="outline"
-              size="lg"
-              className="flex-1 h-12 text-lg"
+              className="flex-1"
             >
-              <Minus className="h-5 w-5 mr-2" />
+              <Minus className="h-4 w-4 mr-2" />
               Decrease
             </Button>
 
             <Button
               onClick={increment}
               disabled={!isConnected}
-              size="lg"
-              className="flex-1 h-12 text-lg"
+              className="flex-1"
             >
-              <Plus className="h-5 w-5 mr-2" />
+              <Plus className="h-4 w-4 mr-2" />
               Increase
             </Button>
           </div>
@@ -78,19 +70,19 @@ export function Counter() {
             onClick={reset}
             disabled={!isConnected}
             variant="destructive"
-            className="w-full h-12 text-lg"
+            className="w-full"
           >
-            <RotateCcw className="h-5 w-5 mr-2" />
+            <RotateCcw className="h-4 w-4 mr-2" />
             Reset Counter
           </Button>
 
           {/* Connection Status */}
           {!isConnected && (
-            <div className="text-center p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <p className="text-sm text-yellow-800">
+            <Alert variant="destructive">
+              <AlertDescription>
                 Connecting to server... Please wait.
-              </p>
-            </div>
+              </AlertDescription>
+            </Alert>
           )}
         </CardContent>
       </Card>
