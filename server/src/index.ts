@@ -13,7 +13,20 @@ const server = createServer(app);
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+  process.env.CLIENT_URL || "http://localhost:5173",
+  "http://localhost:3000",
+];
+
+console.log("🌐 Allowed CORS origins:", allowedOrigins);
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // Initialize Socket.IO
@@ -46,6 +59,7 @@ async function startServer() {
       console.log(`🚀 Server running on port ${PORT}`);
       console.log(`📊 Counter API: http://localhost:${PORT}/api/counter`);
       console.log(`🔌 WebSocket: ws://localhost:${PORT}`);
+      console.log(`🌐 CORS enabled for origins: ${allowedOrigins.join(", ")}`);
     });
   } catch (error) {
     console.error("Failed to start server:", error);

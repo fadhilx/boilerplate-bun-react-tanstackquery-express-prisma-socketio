@@ -11,10 +11,18 @@ export class SocketManager {
   private io: SocketIOServer;
 
   constructor(server: HTTPServer) {
+    const allowedOrigins = [
+      process.env.CLIENT_URL || "http://localhost:5173",
+      "http://localhost:3000",
+    ];
+
+    console.log("🔌 Socket.IO CORS origins:", allowedOrigins);
+
     this.io = new SocketIOServer(server, {
       cors: {
-        origin: "http://localhost:3000",
+        origin: allowedOrigins,
         methods: ["GET", "POST"],
+        credentials: true,
       },
     });
 
@@ -23,7 +31,7 @@ export class SocketManager {
 
   private setupEventHandlers() {
     this.io.on("connection", (socket) => {
-      console.log(`Client connected: ${socket.id}`);
+      console.log(`✅ Client connected: ${socket.id}`);
 
       // Send current counter value to newly connected client
       this.sendCurrentCounter(socket);
@@ -44,7 +52,7 @@ export class SocketManager {
       });
 
       socket.on("disconnect", () => {
-        console.log(`Client disconnected: ${socket.id}`);
+        console.log(`❌ Client disconnected: ${socket.id}`);
       });
     });
   }
