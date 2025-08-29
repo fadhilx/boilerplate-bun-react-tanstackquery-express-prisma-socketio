@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { Counter } from "./components/Counter";
+import { Counter } from "@/components/Counter";
 import "./index.css";
 
 // Create a client

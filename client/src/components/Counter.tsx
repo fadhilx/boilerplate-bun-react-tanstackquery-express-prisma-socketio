@@ -1,7 +1,7 @@
 import { Plus, Minus, RotateCcw, Wifi, WifiOff } from "lucide-react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { useSocket } from "../hooks/useSocket";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useSocket } from "@/hooks/useSocket";
 
 export function Counter() {
   const { counter, isConnected, lastUpdate, increment, decrement, reset } =
