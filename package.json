@@ -1,0 +1,20 @@
+{
+  "name": "boilerplate-bun-react-tanstackquery-express-prisma-socketio",
+  "version": "1.0.0",
+  "description": "Real-time counter project with WebSocket synchronization",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "bun --filter '*' dev",
+    "dev:server": "cd server && bun run dev",
+    "setup": "cd server && bunx prisma migrate dev",
+    "dev:client": "cd client && bun run dev",
+    "build": "bun run build:server && bun run build:client",
+    "build:server": "cd server && bun run build",
+    "build:client": "cd client && bun run build",
+    "install:all": "bun install && cd server && bun install && cd ../client && bun install"
+  }
+}

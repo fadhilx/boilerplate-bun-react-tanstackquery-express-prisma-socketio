@@ -1,0 +1,65 @@
+# Cursor Rules for Boilerplate Bun React TanStack Query Express Prisma Socket.IO Project
+
+## Project Structure
+- This is a monorepo with client and server packages
+- Server: TypeScript + Express + Socket.IO + Prisma
+- Client: React + TypeScript + TanStack Query + Tailwind CSS + shadcn/ui
+- Use Bun for runtime, bundling, and package management
+
+## Code Style & Patterns
+
+### Server Side
+- Use TypeScript with strict mode enabled
+- Follow Express.js best practices
+- Use Prisma for database operations
+- Implement proper error handling and logging
+- Use async/await for database operations
+- Structure utilities in separate modules
+- Use Socket.IO for real-time communication
+
+### Client Side
+- Use functional components with hooks
+- Implement proper TypeScript types
+- Use TanStack Query for server state management
+- Follow shadcn/ui component patterns
+- Use Tailwind CSS for styling
+- Implement proper error boundaries
+- Use custom hooks for complex logic
+
+### General
+- Write clean, readable code
+- Use meaningful variable and function names
+- Add JSDoc comments for complex functions
+- Implement proper error handling
+- Use utility functions to avoid code duplication
+- Follow DRY (Don't Repeat Yourself) principle
+
+## File Organization
+- Keep related functionality together
+- Use consistent file naming (kebab-case for files, PascalCase for components)
+- Group utilities and helpers in dedicated folders
+- Maintain clear separation between client and server code
+
+## Dependencies
+- Prefer stable, well-maintained packages
+- Use exact versions for critical dependencies
+- Keep dependencies up to date
+- Document any special dependency requirements
+
+## Real-time Features
+- Ensure WebSocket connections are properly managed
+- Implement proper connection state handling
+- Use optimistic updates where appropriate
+- Handle disconnections gracefully
+
+## Database
+- Use Prisma migrations for schema changes
+- Implement proper database initialization
+- Handle database errors gracefully
+- Use transactions for complex operations
+
+## Testing & Quality
+- Write tests for critical functionality
+- Use TypeScript strict mode
+- Implement proper error boundaries
+- Add logging for debugging
