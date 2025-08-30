@@ -39,9 +39,7 @@ boilerplate-bun-react-tanstackquery-express-prisma-socketio/
 ├── package.json            # Root monorepo config
 ├── .cursorrules           # Development guidelines
 ├── README.md              # Comprehensive documentation
-├── setup.sh               # Setup script (Linux/Mac)
-├── dev.bat                # Windows batch file
-├── dev.ps1                # PowerShell script
+├── package.json            # Root monorepo config
 └── .gitignore            # Git ignore rules
 ```
 
@@ -82,7 +80,7 @@ boilerplate-bun-react-tanstackquery-express-prisma-socketio/
 
    This will start:
    - Server on http://localhost:3001
-   - Client on http://localhost:3000
+   - Client on http://localhost:5173
 
 ## Development
 
@@ -113,6 +111,8 @@ bun run db:push
 # Open Prisma Studio
 bun run db:studio
 ```
+
+**Note**: The `bun setup` command handles initial database setup automatically.
 
 ### Building for Production
 
@@ -176,11 +176,10 @@ model Counter {
 
 ### Common Issues
 
-1. **Port conflicts**: Ensure ports 3000 and 3001 are available
-2. **Database errors**: Run `bun run db:generate` and `bun run db:push`
+1. **Port conflicts**: Ensure ports 3001 and 5173 are available
+2. **Database errors**: Run `bun setup` or manually run `bun run db:generate` and `bun run db:push`
 3. **Socket connection issues**: Check server is running and CORS settings
 4. **Build errors**: Clear node_modules and reinstall with `bun install`
-5. **Windows users**: Use `dev.bat` or `dev.ps1` for easier startup
 
 ### Debug Mode
 
