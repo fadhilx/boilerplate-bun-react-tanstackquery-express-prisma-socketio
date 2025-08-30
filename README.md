@@ -52,54 +52,32 @@ boilerplate-bun-react-tanstackquery-express-prisma-socketio/
 
 ## Quick Start
 
-1. **Clone and install dependencies:**
+1. **Clone the repository:**
    ```bash
    git clone <repository-url>
    cd boilerplate-bun-react-tanstackquery-express-prisma-socketio
-   bun run install:all
    ```
 
-2. **Set up environment variables:**
+2. **Install dependencies:**
+   ```bash
+   bun i
+   ```
+
+3. **Create environment file:**
    ```bash
    cd server
    cp env.example .env
-   # Edit .env with your database URL if needed
+   cd ..
    ```
 
-3. **Initialize database:**
+4. **Setup the project:**
    ```bash
-   cd server
-   bun run db:generate
-   bun run db:push
+   bun setup
    ```
 
-4. **Start both client and server:**
-
-   **Option 1: Using Bun (Cross-platform)**
+5. **Start development servers:**
    ```bash
-   # From root directory
-   bun run dev
-   ```
-
-   **Option 2: Windows Batch File**
-   ```bash
-   # Double-click dev.bat or run from command line
-   dev.bat
-   ```
-
-   **Option 3: PowerShell Script**
-   ```powershell
-   # Run from PowerShell
-   .\dev.ps1
-   ```
-
-   **Option 4: Manual (Individual terminals)**
-   ```bash
-   # Terminal 1 - Server
-   bun run dev:server
-
-   # Terminal 2 - Client
-   bun run dev:client
+   bun dev
    ```
 
    This will start:
